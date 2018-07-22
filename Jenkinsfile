@@ -58,6 +58,7 @@ node {
                     sh 'docker volume ls -qf dangling=true | xargs -r docker volume rm'
                 }
                 stage('Docker Build') {
+                    sh "cat Dockerfile"
                     sh "docker build -t rutz/testproject:${gitshash} ."
                 }
                 stage('Docker Push') {
